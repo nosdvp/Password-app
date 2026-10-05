@@ -3,18 +3,6 @@
     margin: 0;
     box-sizing: border-box;
 }
-
-@mixin animButton{
-    &:hover{
-        transform: scale(1.02);
-        transition: all 0.1s;
-    }
-    &:active{
-        transform: scale(0.98);
-        transition: all 0.1s;
-    }
-}
-
 .wrapper{
     width: 100%;
     height: 100vh;
@@ -23,18 +11,16 @@
     justify-content: center;
     background-color: #14131b;
 }
-
 .boxWrapper{
     width: 400px;
-    height: 600px;
-    border: 1px solid red;
+    height: auto;
     h2{
         color: #8f8d9b;
         font-size: 25px;
         width: 100%;
         text-align: center;
         word-spacing: 10px;
-        margin-bottom: 40px;
+        margin-bottom: 20px;
     }
     &__visiblePass{
         width: 100%;
@@ -45,17 +31,20 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        &_examplePass{
+        &_examplePass,
+        &_password{
             font-size: 25px;
             color: rgba(192, 192, 192, 0.626);
             width: 280px;
             user-select: none;
             font-weight: bold;
+            word-break: break-all;
         }
         &_copyIMG{
             background-image: url('./img/copy.svg');
             width: 30px;
             height: 30px;
+            flex-shrink: 0;
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
@@ -63,19 +52,17 @@
             transition: all 0.1s;
             &:hover{
                 transform: scale(1.02);
-                transition: all 0.1s;
                 background-image: url('./img/copyWhite.svg');
             }
             &:active{
                 transform: scale(0.98);
-                transition: all 0.1s;
             }
         }
     }
     &__navBlock{
         background-color: #24232b;
         width: 100%;
-        height: 300px;
+        height: auto;
         padding: 20px;
         &_choiseCountBlock{
             width: 100%;
@@ -86,6 +73,7 @@
             margin-bottom: 20px;
             &_titleCount{
                 padding: 10px;
+
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
@@ -106,16 +94,16 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                input[type="range"] {
+                input[type="range"]{
                     width: 90%;
                     appearance: none;
                     height: 10px;
                     background: #14131b;
                     border-radius: 5px;
-                    margin-bottom: 30px;    
+                    margin-bottom: 30px;
+                    cursor: pointer;
                 }
-
-                input[type="range"]::-webkit-slider-thumb {
+                input[type="range"]::-webkit-slider-thumb{
                     appearance: none;
                     width: 23px;
                     height: 23px;
@@ -123,67 +111,65 @@
                     border-radius: 50%;
                     cursor: pointer;
                 }
-            } 
-        }
-        
-        h3{
-            color: white;
-            font-size: 25px;
-            font-weight: bold;
-        }
-        &_firstOptionInactive,
-        &_secondOptionInactive,
-        &_thirdOptionInactive,
-        &_fourthOptionInactive,
-        &_firstOptionActive,
-        &_secondOptionActive,
-        &_thirdOptionActive,
-        &_fourthOptionActive{
-            display: flex;
-            align-items: center;
-            justify-content: start;
-            gap: 20px;
-            font-size: 18px;
-            color: white;
-            cursor: pointer;
-            div{
-                width: 20px;
-                height: 20px;
-                border: 2px solid white;
-                &:hover{
-                    border: 2px solid #a4ffaf;
-                }
             }
         }
-        &_firstOptionActive,
-        &_secondOptionActive,
-        &_thirdOptionActive,
-        &_fourthOptionActive{
-            div{
-                width: 20px;
-                height: 20px;
-                background-color: #a4ffaf;
+        &_choiseOptionBlock{
+            height: auto;
+            background-color: #908e9c37;
+            border-radius: 20px;
+            box-shadow: inset 0px 1px 10px #23d63856;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            h3{
+                color: white;
+                font-size: 25px;
+                font-weight: bold;
+                margin-bottom: 20px;
+            }
+            &_firstOptionInactive,
+            &_secondOptionInactive,
+            &_thirdOptionInactive,
+            &_fourthOptionInactive,
+            &_firstOptionActive,
+            &_secondOptionActive,
+            &_thirdOptionActive,
+            &_fourthOptionActive{
                 display: flex;
                 align-items: center;
-                justify-content: center;
-                border: none;
-                img{
-                    width: 17px;
-                    height: 17px;
+                justify-content: flex-start;
+                gap: 20px;
+                font-size: 18px;
+                color: white;
+                cursor: pointer;
+                margin-bottom: 10px;
+                div{
+                    width: 20px;
+                    height: 20px;
+                    border: 2px solid white;
+                    flex-shrink: 0;
+                    &:hover{
+                        border: 2px solid #a4ffaf;
+                    }
                 }
             }
-        }
-        &_difficultLVL{
-            width: 100%;
-            height: 50px;
-            background-color: #14131b;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px 20px;
-            color: #908e9c;
-            font-weight: bold;
+            &_firstOptionActive,
+            &_secondOptionActive,
+            &_thirdOptionActive,
+            &_fourthOptionActive{
+                div{
+                    width: 20px;
+                    height: 20px;
+                    background-color: #a4ffaf;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border: none;
+                    img{
+                        width: 17px;
+                        height: 17px;
+                    }
+                }
+            }
         }
         &_generateButton{
             background-color: #a4ffaf;
@@ -199,6 +185,7 @@
             align-items: center;
             justify-content: center;
             gap: 20px;
+            transition: all 0.1s;
             div{
                 width: 30px;
                 height: 30px;
@@ -206,19 +193,13 @@
                 background-position: center;
                 background-size: cover;
             }
-            &:hover,
-            &:active{
+            &:hover{
                 transform: scale(1.02);
-                transition: all 0.1s;
                 background-color: transparent;
                 border: 2px solid #a4ffaf;
                 color: #a4ffaf;
                 div{
-                    width: 30px;
-                    height: 30px;
                     background-image: url('./img/arrow_green.svg');
-                    background-position: center;
-                    background-size: cover;
                 }
             }
             &:active{
